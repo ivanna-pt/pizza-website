@@ -1,0 +1,59 @@
+@media screen and (max-width: $breakpoint-xl){
+  .container{
+    max-width: 960px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-lg) {
+  .container{
+    max-width: 720px;
+  }
+
+  .navbar{
+    background-color: $dark-background;
+    @include transition;
+    .container{
+      //flex-direction: column;
+      //justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .menu-btn{
+      visibility: visible;
+    }
+    &-collapse{
+      position: absolute;
+      flex-basis: 100%;
+      transition: transform 0.4s ease-in-out;
+      transform: translateY(-100%);
+
+      &.open{
+        transform: translateY(0);
+        position: relative;
+        transition: transform 0.4s ease-in-out;
+      }
+    }
+
+    &-nav{
+      flex-direction: column;
+    }
+
+    .nav-item{
+      padding: 1rem 0rem;
+      transform: translateX(100vw);
+      @include transition;
+      transition-delay: 0.4s;
+
+      &.open{
+        transform: translateX(0);
+        @include transition;
+
+      }
+    }
+
+    @for $i from 1 through 6{
+      .nav-item:nth-child(#{$i}){
+        transition-delay: ($i * 0.1s) + 0.15s;
+      }
+    }
+  }
+}
