@@ -260,6 +260,11 @@ h1, h2, h3, h4, h5 {
   font-weight: 400;
 }
 
+h2 {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
 .yellow-text {
   color: #fac564;
 }
@@ -300,22 +305,22 @@ h1, h2, h3, h4, h5 {
   display: flex;
   width: 100%;
 }
-.intro .intro-info {
+.intro-info {
   padding: 1.5rem 2rem;
   flex: 0 0 65%;
   background-color: #121618;
   display: flex;
   justify-content: flex-end;
 }
-.intro .intro-info__item {
+.intro-info__item {
   display: flex;
 }
-.intro .intro-info .info-icon {
+.intro-info .info-icon {
   padding: 0 1rem;
   color: #fac564;
   font-size: 1.25rem;
 }
-.intro .intro-socials {
+.intro-socials {
   padding: 1.5rem 2rem;
   flex: 0 0 35%;
   background-color: #fac564;
@@ -323,19 +328,40 @@ h1, h2, h3, h4, h5 {
   justify-content: flex-start;
   align-items: center;
 }
-.intro .intro-socials .socials-icons {
+.intro-socials .socials-icons {
   display: flex;
 }
-.intro .intro-socials .socials-icons > li {
+.intro-socials .socials-icons > li {
   margin: 1rem;
   transition: all 0.5s ease-in-out;
 }
-.intro .intro-socials .socials-icons > li a {
+.intro-socials .socials-icons > li a {
   color: #FFFFFF;
   font-size: 1.5rem;
+  transition: all 0.5s ease-in-out;
 }
-.intro .intro-socials .socials-icons > li:hover {
+.intro-socials .socials-icons > li:hover {
   transform: scale(1.1);
+}
+.intro-socials .socials-icons > li:hover a {
+  color: #e6e6e6;
+}
+
+.about-wrap {
+  display: flex;
+}
+.about-image {
+  display: block;
+  width: 50%;
+  background: url("../img/about.jpg") no-repeat;
+  background-size: cover;
+}
+.about-content {
+  flex: 1;
+  padding: 5%;
+}
+.about-content h2 {
+  margin-bottom: 1.5rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -398,6 +424,28 @@ h1, h2, h3, h4, h5 {
   }
   .navbar .nav-item:nth-child(6) {
     transition-delay: 0.75s;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+  .intro .container-wrap {
+    flex-direction: column;
+  }
+  .intro-info {
+    flex: 1;
+    flex-direction: column;
+  }
+  .intro-socials {
+    flex: 1;
+  }
+  .about-wrap {
+    flex-direction: column;
+  }
+  .about-image {
+    height: 300px;
+    width: 100%;
   }
 }
 

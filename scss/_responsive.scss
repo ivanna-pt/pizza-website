@@ -1,3 +1,4 @@
+
 @media screen and (max-width: $breakpoint-xl){
   .container{
     max-width: 960px;
@@ -57,3 +58,36 @@
     }
   }
 }
+
+@media screen and (max-width: $breakpoint-md){
+  .container{
+    max-width: 540px;
+  }
+
+  .intro{
+    .container-wrap{
+      flex-direction: column;
+    }
+
+    &-info{
+      flex: 1;
+      flex-direction: column;
+    }
+
+    &-socials{
+      flex: 1;
+    }
+  }
+
+  .about{
+    &-wrap{
+      flex-direction: column;
+    }
+
+    &-image{
+      height: 300px;
+      width: 100%;
+    }
+  }
+}
+

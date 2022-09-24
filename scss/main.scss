@@ -26,6 +26,11 @@ h1, h2, h3, h4, h5{
   font-weight: 400;
 }
 
+h2{
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
 .yellow-text{
   color: $primary-color;
 }
@@ -60,7 +65,7 @@ h1, h2, h3, h4, h5{
     width: 100%;
   }
 
-  .intro-info{
+  &-info{
     padding: 1.5rem 2rem;
     flex: 0 0 65%;
     background-color: $dark-background;
@@ -78,7 +83,7 @@ h1, h2, h3, h4, h5{
     }
   }
 
-  .intro-socials{
+  &-socials{
     padding: 1.5rem 2rem;
     flex: 0 0 35%;
     background-color: $primary-color;
@@ -96,19 +101,44 @@ h1, h2, h3, h4, h5{
         & a{
           color: #FFFFFF;
           font-size: 1.5rem;
+          @include transition;
         }
 
         &:hover{
           transform: scale(1.1);
+
+          & a{
+            color: darken(#ffffff, 10%);
+          }
         }
       }
     }
   }
-
-
 }
 
+.about{
+  &-wrap{
+    display: flex;
+  }
 
+  &-image{
+    display: block;
+    width: 50%;
+    //overflow: hidden;
+    background: url("../img/about.jpg") no-repeat ;
+    background-size: cover;
+  }
+
+  &-content{
+    flex: 1;
+    padding:5%;
+
+    h2{
+      margin-bottom: 1.5rem;
+    }
+  }
+}
 
 @import "responsive";
+
 
