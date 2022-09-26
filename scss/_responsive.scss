@@ -57,6 +57,22 @@
       }
     }
   }
+
+  .heading-block{
+    max-width: 90%;
+  }
+
+  .services{
+    &-content{
+      flex-direction: column;
+    }
+
+    @for $i from 1 to 3{
+      .services-item:nth-child(#{$i}){
+        margin-bottom: 3rem;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: $breakpoint-md){
@@ -89,5 +105,7 @@
       width: 100%;
     }
   }
+
+
 }
 
