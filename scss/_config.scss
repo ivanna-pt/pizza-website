@@ -63,6 +63,35 @@ img, svg{
   text-align: center;
 }
 
+@mixin icon-rotate($border-color, $hover-color, $hover-background){
+  text-align: center;
+  position: relative;
+  z-index: 0;
+
+  &:after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $border-color;
+    z-index: -1;
+    transition: all 0.3s ease-in;
+  }
+
+  &:hover{
+    i{
+      color: $hover-color;
+    }
+
+    &:after{
+      background: $hover-background;
+      transform: rotate(135deg);
+    }
+  }
+}
+
 @mixin transition {
   transition: all 0.5s ease-in-out;
 }

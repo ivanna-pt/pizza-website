@@ -1,6 +1,7 @@
 @import "config";
 @import "menu";
 @import "header";
+@import "home";
 @import "services";
 
 body{
@@ -70,85 +71,9 @@ h2{
   }
 }
 
-.intro{
-  .container-wrap{
-    display: flex;
-    width: 100%;
-  }
 
-  &-info{
-    padding: 1.5rem 2rem;
-    flex: 0 0 65%;
-    background-color: $dark-background;
-    display: flex;
-    justify-content: flex-end;
 
-    &__item{
-      display: flex;
-    }
 
-    .info-icon{
-      padding: 0 1rem;
-      color: $primary-color;
-      font-size: 1.25rem;
-    }
-  }
-
-  &-socials{
-    padding: 1.5rem 2rem;
-    flex: 0 0 35%;
-    background-color: $primary-color;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    .socials-icons{
-      display: flex;
-
-      &>li{
-        margin: 1rem;
-        @include transition;
-
-        & a{
-          color: #FFFFFF;
-          font-size: 1.5rem;
-          @include transition;
-        }
-
-        &:hover{
-          transform: scale(1.1);
-
-          & a{
-            color: darken(#ffffff, 10%);
-          }
-        }
-      }
-    }
-  }
-}
-
-.about{
-  &-wrap{
-    display: flex;
-  }
-
-  &-image{
-    display: block;
-    width: 50%;
-    //overflow: hidden;
-    background: url("../img/about.jpg") no-repeat ;
-    background-size: cover;
-  }
-
-  &-content{
-    flex: 1;
-    padding:5%;
-
-    h2{
-      margin-bottom: 1.5rem;
-    }
-  }
-}
 
 @import "responsive";
 

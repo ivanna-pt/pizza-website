@@ -1,7 +1,6 @@
 .services{
   padding: 5rem 0;
   background-image: url("../img/food.png");
-  //background-size: contain;
   background-repeat: repeat;
 
   h2, h3, p{
@@ -28,32 +27,7 @@
       width: 100px;
       height: 100px;
       margin: 0 auto 3rem auto;
-      text-align: center;
-      position: relative;
-      z-index: 0;
-
-      &:after{
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 1px solid #bf7e06;
-        z-index: -1;
-        transition: all 0.3s ease-in;
-      }
-
-      &:hover{
-        i{
-          color: #FFFFFF;
-        }
-
-        &:after{
-          background: darken($primary-color, 10%);
-          transform: rotate(135deg);
-        }
-      }
+      @include icon-rotate(#bf7e06, #ffffff, darken($primary-color, 10%));
 
 
       i{
