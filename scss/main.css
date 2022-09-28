@@ -535,7 +535,7 @@ img, svg {
 }
 .contact-form .textarea {
   width: 100%;
-  min-height: 80px;
+  min-height: 100px;
   padding: 9px 0;
   resize: vertical;
   color: #fff;
@@ -553,6 +553,65 @@ img, svg {
 .contact-form .form-btn {
   margin-left: 1rem;
   padding: 0.75rem 1rem;
+}
+
+.footer {
+  padding: 5rem 0;
+}
+.footer a {
+  color: inherit;
+  transition: all 0.5s ease-in-out;
+}
+.footer a:hover {
+  color: #FFFFFF;
+}
+.footer h3 {
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  gap: 1.5rem;
+}
+.footer .list-item {
+  padding: 0.5rem 0;
+  display: flex;
+}
+.footer .list-icon {
+  margin-right: 1rem;
+  color: #FFFFFF;
+}
+.footer .socials-icons {
+  display: flex;
+}
+.footer .socials-icons > li {
+  margin: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s ease-in-out;
+}
+.footer .socials-icons > li a {
+  line-height: 1.2rem;
+  font-size: 1.2rem;
+  transition: all 0.5s ease-in-out;
+}
+.footer .socials-icons > li:hover {
+  transform: scale(1.1);
+}
+.footer .socials-icons > li:hover a {
+  color: #FFFFFF;
+}
+.footer-copyright {
+  margin-top: 2rem;
+}
+.footer-copyright p {
+  text-align: center;
 }
 
 .services {
