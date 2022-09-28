@@ -482,6 +482,79 @@ img, svg {
   color: #fac564;
 }
 
+.contact {
+  background-color: #000;
+  display: flex;
+}
+.contact-item {
+  flex: 0 0 50%;
+}
+.contact .map > iframe {
+  width: 100%;
+}
+.contact__wrap {
+  padding: 2rem;
+  max-width: 570px;
+}
+.contact__wrap h2 {
+  padding: 1rem;
+  text-transform: capitalize;
+}
+.contact-form .form-row {
+  display: flex;
+}
+.contact-form .form-group {
+  flex: 1;
+  margin-bottom: 30px;
+  padding: 0 1rem;
+  position: relative;
+}
+.contact-form .input {
+  width: 100%;
+  padding: 9px 0;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+}
+.contact-form .label {
+  letter-spacing: 0.15em;
+  color: #FFFFFF;
+  position: absolute;
+  top: 10px;
+  left: 1rem;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+.contact-form .input:focus + .label {
+  transform: translateY(-16px);
+  font-size: 12px;
+}
+.contact-form .textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 9px 0;
+  resize: vertical;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+}
+.contact-form .textarea:focus + .label {
+  transform: translateY(-16px);
+  font-size: 12px;
+}
+.contact-form .form-btn {
+  margin-left: 1rem;
+  padding: 0.75rem 1rem;
+}
+
 .services {
   padding: 5rem 0;
   background-image: url("../img/food.png");
