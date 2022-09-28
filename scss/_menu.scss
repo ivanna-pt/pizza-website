@@ -5,6 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  background-color: rgba(18, 22, 24, 1);
   @include transition;
 
   &.shrink{
@@ -12,7 +13,8 @@
     @include transition;
   }
 
-  .container{
+  &-container{
+    @extend .container;
     display: flex;
     justify-content: space-between;
     align-items: center;
