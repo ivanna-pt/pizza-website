@@ -13,10 +13,9 @@
   .navbar{
     background-color: $dark-background;
     @include transition;
-    .container{
-      //flex-direction: column;
-      //justify-content: flex-start;
+    &-container{
       flex-wrap: wrap;
+      width: 100%;
     }
     .menu-btn{
       visibility: visible;
@@ -73,11 +72,31 @@
       }
     }
   }
+
+  .gallery{
+    &-info{
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
 }
 
 @media screen and (max-width: $breakpoint-md){
   .container{
     max-width: 540px;
+  }
+
+  h2{
+    font-size: 1.75rem;
+  }
+
+  .header{
+    h1{
+      font-size: 2rem;
+    }
+
+    .text{
+      font-size: 1rem;
+    }
   }
 
   .intro{
@@ -108,10 +127,40 @@
 
   .gallery{
     &-row{
-      grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+      &__item{
+        height: 250px;
+      }
+    }
+
+    &-info{
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+  }
+
+  .blog{
+    &__wrap{
+      grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    }
+
+    &-item{
+      flex-direction: row;
+
+      &__image{
+        margin-right: 1rem;
+        flex: 0 0 40%;
+      }
     }
   }
 
 
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  body{
+    font-size: 14px;
+  }
 }
 

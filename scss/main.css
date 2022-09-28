@@ -38,13 +38,14 @@ img, svg {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: rgb(18, 22, 24);
   transition: all 0.5s ease-in-out;
 }
 .navbar.shrink {
   background-color: rgba(18, 22, 24, 0.9);
   transition: all 0.5s ease-in-out;
 }
-.navbar .container {
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -300,11 +301,11 @@ img, svg {
 }
 
 .gallery-row {
-  height: 300px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
 }
 .gallery-row__item {
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -372,7 +373,7 @@ img, svg {
   background-image: url("../img/bg_2.jpg");
   background-size: cover;
   background-position: center;
-  z-index: -2;
+  z-index: 1;
 }
 .gallery-info:after {
   content: "";
@@ -382,16 +383,16 @@ img, svg {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  z-index: 2;
 }
 .gallery-info__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 10;
+  z-index: 3;
 }
-.gallery-info__item:hover i {
+.gallery-info__item:hover .icon i {
   color: #FFFFFF;
 }
 .gallery-info__item:hover .icon:after {
@@ -404,7 +405,6 @@ img, svg {
   margin-bottom: 2rem;
   text-align: center;
   position: relative;
-  z-index: 20;
 }
 .gallery-info__item .icon:after {
   position: absolute;
@@ -414,13 +414,14 @@ img, svg {
   width: 100%;
   height: 100%;
   border: 1px solid #fac564;
-  z-index: 15;
   transition: all 0.3s ease-in;
 }
 .gallery-info__item .icon i {
   font-size: 60px;
   color: #fac564;
   transition: all 0.2s ease-in;
+  position: relative;
+  z-index: 5;
 }
 .gallery-info__item .body {
   text-align: center;
@@ -431,6 +432,53 @@ img, svg {
 }
 .gallery-info__item .title {
   font-size: 2rem;
+  color: #fac564;
+}
+
+.blog {
+  padding: 5rem 0;
+}
+.blog__wrap {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  gap: 2rem;
+}
+.blog-item {
+  display: flex;
+  flex-direction: column;
+}
+.blog-item__image {
+  height: 250px;
+  overflow: hidden;
+}
+.blog-item__image img {
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+.blog-item__body {
+  margin-top: 1rem;
+}
+.blog-item .item-info {
+  display: flex;
+}
+.blog-item .item-info > div:nth-child(1) {
+  margin-right: 1rem;
+}
+.blog-item .item-info > div:nth-child(2) {
+  margin-right: 1rem;
+}
+.blog-item .item-title {
+  color: #FFFFFF;
+  margin: 0.5rem 0 0.75rem 0;
+  text-transform: capitalize;
+  transition: all 0.2s ease-in;
+}
+.blog-item .item-title a {
+  color: inherit;
+}
+.blog-item .item-title:hover {
   color: #fac564;
 }
 
@@ -501,7 +549,7 @@ body {
   background-size: cover;
 }
 
-.container {
+.container, .navbar-container {
   max-width: 1140px;
   padding-right: 15px;
   padding-left: 15px;
@@ -566,20 +614,21 @@ h2 {
 }
 
 @media screen and (max-width: 1200px) {
-  .container {
+  .container, .navbar-container {
     max-width: 960px;
   }
 }
 @media screen and (max-width: 992px) {
-  .container {
+  .container, .navbar-container {
     max-width: 720px;
   }
   .navbar {
     background-color: #121618;
     transition: all 0.5s ease-in-out;
   }
-  .navbar .container {
+  .navbar-container {
     flex-wrap: wrap;
+    width: 100%;
   }
   .navbar .menu-btn {
     visibility: visible;
@@ -638,10 +687,22 @@ h2 {
   .services .services-item:nth-child(2) {
     margin-bottom: 3rem;
   }
+  .gallery-info {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
 }
 @media screen and (max-width: 768px) {
-  .container {
+  .container, .navbar-container {
     max-width: 540px;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header .text {
+    font-size: 1rem;
   }
   .intro .container-wrap {
     flex-direction: column;
@@ -661,7 +722,29 @@ h2 {
     width: 100%;
   }
   .gallery-row {
-    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  .gallery-row__item {
+    height: 250px;
+  }
+  .gallery-info {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+  .blog__wrap {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+  .blog-item {
+    flex-direction: row;
+  }
+  .blog-item__image {
+    margin-right: 1rem;
+    flex: 0 0 40%;
+  }
+}
+@media screen and (max-width: 576px) {
+  body {
+    font-size: 14px;
   }
 }
 
