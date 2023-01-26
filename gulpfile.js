@@ -4,5 +4,5 @@ const requireDiv = require('require-dir');
 const tasks = requireDiv('./tasks');
 
 exports.hello = tasks.hello;
-
+exports.style = tasks.style;
 
