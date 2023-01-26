@@ -27,5 +27,8 @@
     "gulp-sourcemaps": "^3.0.0",
     "require-dir": "^1.2.0",
     "sass": "^1.57.1"
+  },
+  "dependencies": {
+    "del": "^7.0.0"
   }
 }
