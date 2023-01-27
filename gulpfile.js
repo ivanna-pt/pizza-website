@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 
 const del = require('del')
-const bs = require('browser-sync');
+const browserSync = require('browser-sync').create();
 
 const sass = require('gulp-sass')(require('sass'));
 const bulk = require('gulp-sass-bulk-importer');
@@ -54,6 +54,21 @@ function styles () {
         .pipe(gulp.dest(path.styles.dest))
 }
 
+//Watch changes
+function watch () {
+    gulp.watch(path.styles.src, styles)
+}
+
+function browsersync() {
+    browserSync.init({
+        open: true,
+        server: './build'
+    });
+}
+
+
+
+//Clean dest 
 function clean () {
     return del(['build'])
 }
@@ -62,7 +77,15 @@ function clean () {
 // exports.hello = tasks.hello;
 // exports.style = tasks.style;
 
+
 //new exports
 exports.clean = clean
 exports.styles = styles
+exports.watch = watch
 
+
+exports.default = gulp.series(
+    gulp.parallel(clean),
+    gulp.parallel(styles),
+    gulp.parallel(watch)
+)
