@@ -1,12 +1,12 @@
 const gulp = require('gulp');
 
-const del = require('del');
+const del = require('del')
 const bs = require('browser-sync');
 
 const sass = require('gulp-sass')(require('sass'));
 const bulk = require('gulp-sass-bulk-importer');
 const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean-css');
+const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const sourcemap = require('gulp-sourcemaps');
 
@@ -48,7 +48,7 @@ function styles () {
                 'Safari >= 6',
             ]
         }))
-        .pipe(clean({ level: 2}))
+        .pipe(cleanCSS({ level: 2}))
         .pipe(concat('style.min.css'))
         .pipe(sourcemap.write('../sourcemap/'))
         .pipe(gulp.dest(path.styles.dest))
