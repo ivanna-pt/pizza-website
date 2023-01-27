@@ -53,3 +53,11 @@ function showBurgerMenu(){
         showMenu = false;
     }
 }
+
+// Test function for javascript gulp task
+const text = 'Hello Gulp!'
+function test (text) {
+    console.log("This is test function \n" + text)
+}
+
+test(text);

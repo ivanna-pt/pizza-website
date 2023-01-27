@@ -2,14 +2,16 @@ const gulp = require('gulp');
 
 const del = require('del')
 const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');
+const sourcemap = require('gulp-sourcemaps');
 
 const sass = require('gulp-sass')(require('sass'));
 const bulk = require('gulp-sass-bulk-importer');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
-const concat = require('gulp-concat');
-const sourcemap = require('gulp-sourcemaps');
 
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
 
 //for old exports
 const requireDiv = require('require-dir');
@@ -54,9 +56,23 @@ function styles () {
         .pipe(gulp.dest(path.styles.dest))
 }
 
+//Build Javascript task
+function scripts() {
+    return gulp.src(path.scripts.src)
+        .pipe(sourcemap.init())
+        .pipe(babel())
+        .pipe(uglify())
+        .pipe(concat('main.min.js'))
+        .pipe(sourcemap.write('../sourcemap/'))
+        .pipe(gulp.dest(path.scripts.dest))
+
+}
+
+
 //Watch changes
 function watch () {
     gulp.watch(path.styles.src, styles)
+    gulp.watch(path.scripts.src, scripts)
 }
 
 function browsersync() {
@@ -81,11 +97,12 @@ function clean () {
 //new exports
 exports.clean = clean
 exports.styles = styles
+exports.scripts = scripts
 exports.watch = watch
 
 
 exports.default = gulp.series(
     gulp.parallel(clean),
-    gulp.parallel(styles),
+    gulp.parallel(styles, scripts),
     gulp.parallel(watch)
 )
