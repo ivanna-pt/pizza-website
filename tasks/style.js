@@ -11,7 +11,7 @@ const map = require('gulp-sourcemaps');
 const bs = require('browser-sync');
 
 module.exports = function style () {
-    return src('src/scss/**/*.scss')
+    return src('src/styles/**/*.styles')
         .pipe(map.init())
         .pipe(bulk())
         .pipe(sass({
