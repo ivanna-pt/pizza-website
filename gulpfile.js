@@ -13,6 +13,8 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 
+const fileInclude = require('gulp-file-include');
+
 //for old exports
 const requireDiv = require('require-dir');
 const tasks = requireDiv('./tasks');
@@ -27,6 +29,12 @@ const path = {
     scripts: {
         src: 'src/scripts/**/*.js',
         dest: 'build/js/'
+    },
+    html: {
+        src: [
+            'src/**/*.html', '!!src/components/**/*.html'
+        ],
+        dest: 'build'
     }
 }
 
@@ -68,6 +76,14 @@ function scripts() {
 
 }
 
+// Build HTML task
+function htmlInclude () {
+    return gulp.src(path.html.src)
+        .pipe(fileInclude())
+        .pipe(gulp.dest(path.html.dest))
+    
+}
+
 
 //Watch changes
 function watch () {
@@ -95,14 +111,16 @@ function clean () {
 
 
 //new exports
-exports.clean = clean
-exports.styles = styles
-exports.scripts = scripts
-exports.watch = watch
+exports.clean = clean;
+exports.styles = styles;
+exports.scripts = scripts;
+exports.watch = watch;
+exports.htmlInclude = htmlInclude;
+
 
 
 exports.default = gulp.series(
     gulp.parallel(clean),
-    gulp.parallel(styles, scripts),
+    gulp.parallel(styles, scripts, htmlInclude),
     gulp.parallel(watch)
 )
