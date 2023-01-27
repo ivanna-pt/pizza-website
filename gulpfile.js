@@ -81,7 +81,6 @@ function htmlInclude () {
     return gulp.src(path.html.src)
         .pipe(fileInclude())
         .pipe(gulp.dest(path.html.dest))
-    
 }
 
 
