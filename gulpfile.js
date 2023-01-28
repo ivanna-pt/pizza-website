@@ -48,12 +48,16 @@ const path = {
     images: {
         src: 'src/img/**/*.*',
         dest: "build/img"
+    },
+    fonts: {
+        src: 'src/fonts/**/',
+        dest: 'build/fonts'
     }
 }
 
 //Build Styles Task
 function styles () {
-    return gulp.src(path.styles.src)
+    return gulp.src([path.styles.src, path.fonts.src + '*.scss'])
         .pipe(sourcemap.init())
         .pipe(bulk())
         .pipe(sass({
@@ -139,6 +143,13 @@ function webpConverter () {
 
 const image = gulp.series(imgMin, webpConverter, (done) => {browserSync.reload(); done();});
 
+//Move Flaticon task
+function moveFlaticon() {
+    return gulp.src('src/fonts/flaticon/*.*')
+        .pipe(gulp.dest('build/fonts/flaticon'))
+}
+
+
 
 
 //Watch changes
@@ -175,12 +186,12 @@ exports.scripts = scripts;
 exports.watch = watch;
 exports.htmlInclude = htmlInclude;
 exports.image = image;
-exports.imgMin = imgMin;
+exports.moveFlaticon = moveFlaticon;
 
 
 
 exports.default = gulp.series(
     gulp.parallel(clean),
-    gulp.parallel(styles, scripts, htmlInclude, image),
+    gulp.parallel(styles, scripts, htmlInclude, image, moveFlaticon),
     gulp.parallel(watch)
 )
