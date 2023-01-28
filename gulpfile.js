@@ -32,9 +32,10 @@ const path = {
     },
     html: {
         src: [
-            'src/**/*.html', '!!src/components/**/*.html'
+            'src/**/*.html', '!src/components/**/*.html', '!src/fonts/**/*.html'
         ],
-        dest: 'build'
+        dest: 'build',
+        watch: ['src/**/*.html', '!src/fonts/**/*.html']
     }
 }
 
@@ -79,7 +80,10 @@ function scripts() {
 // Build HTML task
 function htmlInclude () {
     return gulp.src(path.html.src)
-        .pipe(fileInclude())
+        .pipe(fileInclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
         .pipe(gulp.dest(path.html.dest))
 }
 
@@ -88,6 +92,7 @@ function htmlInclude () {
 function watch () {
     gulp.watch(path.styles.src, styles)
     gulp.watch(path.scripts.src, scripts)
+    gulp.watch(path.html.watch, htmlInclude)
 }
 
 function browsersync() {
