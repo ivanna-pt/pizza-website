@@ -24,8 +24,8 @@ const multiDest = require('gulp-multi-dest');
 
 
 //for old exports
-const requireDiv = require('require-dir');
-const tasks = requireDiv('./tasks');
+// const requireDiv = require('require-dir');
+// const tasks = requireDiv('./tasks');
 
 
 //Paths
@@ -137,6 +137,7 @@ function imgMin () {
 
 function webpConverter () {
     return gulp.src('build/img/**/*.{png,jpg,jpeg}')
+        .pipe(newer(path.images.dest))
         .pipe(webp())
         .pipe(gulp.dest(path.images.dest))
 }
@@ -171,7 +172,7 @@ function browsersync() {
 
 //Clean dest 
 function clean () {
-    return del(['build'])
+    return del(['build/*', '!build/img'])
 }
 
 //old exports
