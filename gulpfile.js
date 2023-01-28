@@ -15,6 +15,14 @@ const babel = require('gulp-babel');
 
 const fileInclude = require('gulp-file-include');
 
+const newer = require('gulp-newer');
+const imagemin = require('gulp-imagemin');
+const imageminJpegRecomp = require('imagemin-jpeg-recompress');
+const pngquant = require('imagemin-pngquant');
+const webp = require('gulp-webp');
+const multiDest = require('gulp-multi-dest');
+
+
 //for old exports
 const requireDiv = require('require-dir');
 const tasks = requireDiv('./tasks');
@@ -36,6 +44,10 @@ const path = {
         ],
         dest: 'build',
         watch: ['src/**/*.html', '!src/fonts/**/*.html']
+    },
+    images: {
+        src: 'src/img/**/*.*',
+        dest: "build/img"
     }
 }
 
@@ -87,12 +99,54 @@ function htmlInclude () {
         .pipe(gulp.dest(path.html.dest))
 }
 
+//Build Images task
+function imgMin () {
+    return gulp.src(path.images.src)
+        .pipe(newer(path.images.dest))
+        // .pipe(imagemin())
+        .pipe(imagemin([
+            imageminJpegRecomp({
+                progressive: true,
+                min: 70, max: 75
+            }),
+
+            pngquant({
+                speed: 5,
+                quality: [0.6, 0.8]
+            }),
+
+            imagemin.svgo({
+                plugins: [
+                    { removeViewBox: false },
+                    { removeUnusedNS: false },
+                    { removeUselessStrokeAndFill: false },
+                    { cleanupIDs: false },
+                    { removeComments: true },
+                    { removeEmptyAttrs: true },
+                    { removeEmptyText: true },
+                    { collapseGroups: true }
+                ]
+            })
+        ]))
+        .pipe(gulp.dest(path.images.dest))
+}
+
+function webpConverter () {
+    return gulp.src('build/img/**/*.{png,jpg,jpeg}')
+        .pipe(webp())
+        .pipe(gulp.dest(path.images.dest))
+}
+
+const image = gulp.series(imgMin, webpConverter, (done) => {browserSync.reload(); done();});
+
+
 
 //Watch changes
 function watch () {
     gulp.watch(path.styles.src, styles)
     gulp.watch(path.scripts.src, scripts)
     gulp.watch(path.html.watch, htmlInclude)
+    gulp.watch(path.images.src, image)
 }
 
 function browsersync() {
@@ -120,11 +174,13 @@ exports.styles = styles;
 exports.scripts = scripts;
 exports.watch = watch;
 exports.htmlInclude = htmlInclude;
+exports.image = image;
+exports.imgMin = imgMin;
 
 
 
 exports.default = gulp.series(
     gulp.parallel(clean),
-    gulp.parallel(styles, scripts, htmlInclude),
+    gulp.parallel(styles, scripts, htmlInclude, image),
     gulp.parallel(watch)
 )
