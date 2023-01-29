@@ -4,6 +4,7 @@ const del = require('del')
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const sourcemap = require('gulp-sourcemaps');
+const ghPages = require('gulp-gh-pages');
 
 const sass = require('gulp-sass')(require('sass'));
 const bulk = require('gulp-sass-bulk-importer');
@@ -170,11 +171,15 @@ function browsersync() {
     });
 }
 
-
-
 //Clean dest 
 function clean () {
     return del(['build/*', '!build/img'])
+}
+
+//Deploy on GitHub Pages
+function deploy () {
+    return gulp.src('build/**/*')
+        .pipe(ghPages())
 }
 
 //old exports
@@ -190,6 +195,7 @@ exports.watch = watch;
 exports.htmlInclude = htmlInclude;
 exports.image = image;
 exports.moveFlaticon = moveFlaticon;
+exports.deploy = deploy;
 
 
 
@@ -198,3 +204,4 @@ exports.default = gulp.series(
     gulp.parallel(styles, scripts, htmlInclude, image, moveFlaticon),
     gulp.parallel(browsersync, watch)
 )
+
