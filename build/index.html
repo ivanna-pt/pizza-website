@@ -1,0 +1,161 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description"
+          content="Pizza Restaurant & Delivery website. Non-commercial pet-project with Vanilla JS, Gulp, CSS Flexbox and Grids, SCSS ">
+    <meta name="keywords"
+          content="gulp, scss, grids, flexbox">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Nothing+You+Could+Do&family=Poppins:wght@100;200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
+    <title>Pizza Delicious | Home</title>
+</head>
+
+
+<body>
+<nav class="navbar" id="navBar">
+    <div class="navbar-container">
+        <a href="index.html" class="navbar-logo">
+            <i class="flaticon-pizza-slice"></i>
+            Pizza
+            <br>
+            <span class="small">Delicious</span>
+        </a>
+
+        <div class="menu-btn">
+            <span class="menu-btn__burger"></span>
+        </div>
+
+        <div class="navbar-collapse collapse ">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <div class="header__body-content">
+                <p class="accent-heading">Welcome</p>
+                <h1>We cooked your desired pizza recipe</h1>
+                <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda est modi perferendis voluptas.
+                </p>
+            </div>
+            <div class="header__body-buttons">
+                <a href="#" class="btn-primary">Order now</a>
+                <a href="#" class="btn-white">View menu</a>
+            </div>
+        </div>
+
+        <div class="indicator-wrapper">
+            <div class="indicator-item">
+                <div></div>
+            </div>
+            <div class="indicator-item">
+                <div></div>
+            </div>
+            <div class="indicator-item">
+                <div></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<section class="contact" id="contact">
+    <div class="contact-item left">
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10158.519920518022!2d30.489671630132037!3d50.46661468010431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce6e0e3e193f%3A0x130488101cfbe2ba!2z0KnQtdC60LDQstC40YbQsA!5e0!3m2!1sru!2sua!4v1664386243985!5m2!1sru!2sua" width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <div class="contact-item right">
+        <div class="contact__wrap">
+            <h2>Contact us</h2>
+            <form action="submit" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="first-name" id="first-name" class="input">
+                        <label for="first-name" class="label">First Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="first-name" id="last-name" class="input">
+                        <label for="last-name" class="label">Last Name</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="input">
+                    <label for="email" class="label">Email</label>
+                </div>
+
+                <div class="form-group">
+                    <textarea type="text" name="first-name" id="message" class="textarea"></textarea>
+                    <label for="message" class="label">Message</label>
+                </div>
+                <button type="submit" class="btn-primary form-btn">Send</button>
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-info">
+            <div class="footer-info__item">
+                <h3>About us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam beatae est natus placeat porro?</p>
+            </div>
+            <div class="footer-info__item">
+                <h3>Services</h3>
+                <ul class="list">
+                    <li class="list-item"><a href="/" >Cooked</a></li>
+                    <li class="list-item"><a href="/" >Deliver</a></li>
+                    <li class="list-item"><a href="/" >Quality foods</a></li>
+                    <li class="list-item"><a href="/" >Mixed</a></li>
+                </ul>
+            </div>
+            <div class="footer-info__item">
+                <h3>Have a question?</h3>
+                <ul class="list">
+                    <li class="list-item">
+                        <span class="list-icon"><i class="flaticon-map"></i></span>
+                        <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
+                    </li>
+                    <li class="list-item">
+                        <span class="list-icon"><i class="flaticon-phone-call"></i></span>
+                        <a href="tel:+380129876543">+38 012 987 65 43</a>
+                    </li>
+                    <li class="list-item">
+                        <span class="list-icon"><i class="flaticon-envelope"></i></span>
+                        <a href="mailto:example@yourmail.com">example@yourmail.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-socials">
+            <ul class="socials-icons">
+                <li><a href="#"><i class="flaticon-twitter"></i></a></li>
+                <li><a href="#"><i class="flaticon-facebook"></i></a></li>
+                <li><a href="#" ><i class="flaticon-instagram"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-copyright">
+            <p>Copyright ©2022 This template is coded with <i class="flaticon-heart"></i> by <a href="https://github.com/ivanna-pt">Ivanna Pokhyl</a></p>
+        </div>
+    </div>
+</footer>
+<script src="js/main.min.js"></script>
+</body>
+</html>
