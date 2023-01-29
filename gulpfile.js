@@ -79,6 +79,7 @@ function styles () {
         .pipe(concat('style.min.css'))
         .pipe(sourcemap.write('../sourcemap/'))
         .pipe(gulp.dest(path.styles.dest))
+        .pipe(browserSync.stream())
 }
 
 //Build Javascript task
@@ -90,7 +91,7 @@ function scripts() {
         .pipe(concat('main.min.js'))
         .pipe(sourcemap.write('../sourcemap/'))
         .pipe(gulp.dest(path.scripts.dest))
-
+        .pipe(browserSync.stream())
 }
 
 // Build HTML task
@@ -101,6 +102,7 @@ function htmlInclude () {
             basepath: '@file'
         }))
         .pipe(gulp.dest(path.html.dest))
+        .pipe(browserSync.stream())
 }
 
 //Build Images task
@@ -137,7 +139,7 @@ function imgMin () {
 
 function webpConverter () {
     return gulp.src('build/img/**/*.{png,jpg,jpeg}')
-        .pipe(newer(path.images.dest))
+        // .pipe(newer(path.images.dest))
         .pipe(webp())
         .pipe(gulp.dest(path.images.dest))
 }
@@ -194,5 +196,5 @@ exports.moveFlaticon = moveFlaticon;
 exports.default = gulp.series(
     gulp.parallel(clean),
     gulp.parallel(styles, scripts, htmlInclude, image, moveFlaticon),
-    gulp.parallel(watch)
+    gulp.parallel(browsersync, watch)
 )
